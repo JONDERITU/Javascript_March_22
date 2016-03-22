@@ -1,11 +1,134 @@
-<<!DOCTYPE html>
+<!--
+ * Cytonn Technologies
+ *
+ * @author: Joseph Gicha e <jgichane@cytonn.com>
+ *
+ * Project: Javascript.
+ *
+ *-->
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Getting into Javascript</title>
 </head>
 <body>
 
-<h1>Learning Javascript</h1>
+	<h1>Learning Javascript</h1>
+	<script>
+		//using window.alert()method to display a popup
+		window.alert("Joseph Gichane Learning Javascript at Cytonn Technologies");
+	</script>
 
+	<div>
+		<h2>Validating Inputs</h2>
+
+		<p>Please input a number between 1 and 10:</p>
+
+		<input id="numb">
+
+			<button type="button" onclick="myFunction()">Submit</button>
+
+			<p id="demo"></p>
+
+			<script>
+			// input validation function
+				function myFunction() {
+	    		var x, text;
+
+	    		// Get the value of the input field with id="numb"
+	    		x = document.getElementById("numb").value;
+
+	    		// If x is Not a Number or less than one or greater than 10
+	    		if (isNaN(x) || x < 1 || x > 10) {
+	       			 text = "Input not within the limits!";
+	    			} else {
+	        		text = "Input OK";
+	    		}
+	    		document.getElementById("demo").innerHTML = text;
+				}
+			</script>
+
+	</div>
+	<div>
+		<h2>Changing Html</h2>
+		<p id="change">Javascript can change this paragraph</p>
+		<button type="button" onclick="change()">Click to change Paragraph</button>
+		<script>
+					function change() {
+						document.getElementById("change") .innerHTML="This paragraph has been changed using Javascript";
+					}
+		</script>
+	</div>
+	<div>
+		<h1>Changing image source on Click</h1>
+
+		<img id="myImage" onclick="changeImage()" src="http://www.w3schools.com/js/pic_bulboff.gif" width="100" height="180">
+
+		<p>Click the light bulb to turn on/off the light.</p>
+
+		<script>
+			function changeImage() {
+		    var image = document.getElementById('myImage');
+		    if (image.src.match("bulbon")) {
+		        image.src = "http://www.w3schools.com/js/pic_bulboff.gif";
+		    } else {
+		        image.src = "http://www.w3schools.com/js/pic_bulbon.gif";
+		    }
+			}
+		</script>
+	</div>
+		<!-- Globlal variable-->
+	<div>
+		<p>Counting with a global variable.</p>
+
+		<button type="button" onclick="myFunction()">Count!</button>
+
+		<p id="counter">0</p>
+
+		<script>
+		//initialise counter as global variable
+		var counter = 0;
+
+		function add() {
+		    return counter += 1;
+		}
+
+		function myFunction(){
+		    document.getElementById("counter").innerHTML = add();
+		}
+		</script>
+		<!-- Using Closure -->
+					<p>Counting with a local variable. using closure</p>
+			<button type="button" onclick="closure()">Count!</button>
+			<p id="closure_counter">0</p>
+			<script>
+			var add = (function () {
+			    var counter = 0;
+			    return function () {return counter += 1;}
+			})();
+			function closure(){
+			    document.getElementById("closure_counter").innerHTML = add();
+			}
+			</script>
+
+	</div>
+	<div>
+		<!-- implementing prototype-->
+		<p id="prototype"></p>
+
+		<script>
+		function person(first, last, age) {
+		    this.firstName = first;
+		    this.lastName = last;
+		    this.age = age;
+		 
+		}
+		person.prototype.nationality = "English";
+
+		var myFather = new person("Hashim", "Rama", 50, "blue");
+		document.getElementById("prototype").innerHTML =
+		"My father is " + myFather.nationality; 
+		</script>
+	</div>
 </body>
 </html>
